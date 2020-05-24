@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  div(class = 'col-sm-9 col-md-9')
+    div(class = 'container')
+      h1 #{title}
+
+      form(method='post', enctype='multipart/form-data', action='')
+        div.form-group
+          label(for='name') Producer:
+          input#name.form-control(type='text', placeholder='Farm, Deli etc' name='name' value=(undefined===producer ? '' : producer.name))
+          label(for='speciality') Speciality:
+          input#speciality.form-control(type='text', placeholder='Meat, Fruit, Dairy etc' name='speciality' value=(undefined===producer ? '' : producer.speciality))
+          label(for='location') Location:
+          input#location.form-control(type='text', placeholder='Postcode' name='location' value=(undefined===producer ? '' : producer.postcode))
+          label(for='summary') Summary:
+          input#summary.form-control(type='text', placeholder='Bristol based orchard specialising in the production of vintage cider...' name='summary' value=(undefined===producer ? '' : producer.summary))
+          label(for='phone') Phone number:
+          input#phone.form-control(type='text', placeholder='07591656768' name='phone' value=(undefined===producer ? '' : producer.phone))
+          label(for='image') Image:
+          input#image.form-control(type='file', placeholder='upload image' name = 'image' value=(undefined===producer ? '' : producer.image))
+
+        button.btn.btn-primary(type='submit') Submit
+
+      if errors
+        ul
+          for error in errors
+            li!= error.msg

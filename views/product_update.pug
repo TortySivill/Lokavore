@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  div(class = 'col-sm-9 col-md-9')
+    div(class = 'container')
+      h1= title
+
+
+      form(method='POST', enctype='multipart/form-data', action='')
+        div.form-group
+          label(for='title') Title:
+          input#title.form-control(type='text', placeholder= data.title name='title'  value=(undefined===produce ? '' : produce.title) )
+
+        //- div.form-group
+        //-   label(for='Category') Category:
+        //-   select#category.form-control(type='select', placeholder=data.category name='category'  )
+        //-     for category in nav
+        //-       for subcat in category.subcats
+        //-         option(value = {'category' : category.id,'subcat': subcat.id}) #{category.name}-#{subcat.name}
+
+        div.form-group
+          label(for='price') Price:
+          input#price.form-control(type='number', placeholder= data.price name='price' value=(undefined===produce ? '' : produce.price) )
+        div.form-group
+          label(for='rating') Rating:
+          input#rating.form-control(type='number', placeholder= data.rating name='rating' value=(undefined===produce ? '' : produce.rating) )
+        div.form-group
+          label(for='quantity') Quantity:
+          input#quantity.form-control(type='number', placeholder= data.quantity name='quantity' value=(undefined===produce ? '' : produce.quantity) )
+        div.form-group
+          label(for='weight') Rating:
+          input#weight.form-control(type='number', placeholder= data.weight name='weight' value=(undefined===produce ? '' : produce.weight) )
+        div.form-group
+          label(for='description') Description:
+          input#description.form-control(type='text', placeholder= data.description name='description' value=(undefined===produce ? '' : produce.description) )
+        div.form-group
+          label(for='image') Image:
+          input#description.form-control(type='file', placeholder= 'Upload Image here' name='image' value=(undefined===produce ? '' : produce.image) )
+
+        button.btn.btn-primary(type='submit') Submit
+        a(href="/catalog/product/"+data.id+"/delete/" class="btn btn-danger" role="button") Delete
+          
+          
+      if errors
+        ul
+          for error in errors
+            li!= error.msg

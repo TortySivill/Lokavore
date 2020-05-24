@@ -1,0 +1,72 @@
+
+.col-sm-3.col-md-3
+  #accordion.panel-group
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          a(data-toggle='collapse', data-parent='#accordion', href='#collapseFive')
+            span.glyphicon.glyphicon-shopping-cart
+            |  Producer Info
+      #collapseFive.panel-collapse.collapse.in
+        .panel-body
+          table.table
+            tr
+              td
+                a(href='/catalog/producer/create')  Add/update producer info 
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          a(data-toggle='collapse', data-parent='#accordion', href='#collapseOne')
+            span.glyphicon.glyphicon-tag
+            |  Manage Stock
+      #collapseOne.panel-collapse.collapse
+        .panel-body
+          table.table
+            tr
+              td
+                a(href='/catalog/product/create')  Create new product 
+            tr
+              td
+                a(href='/catalog/product/update')  Edit current produce 
+    //- .panel.panel-default
+    //-   .panel-heading
+    //-     h4.panel-title
+    //-       a(data-toggle='collapse', data-parent='#accordion', href='#collapseTwo')
+    //-         span.glyphicon.glyphicon-check
+    //-         |  Orders
+    //-   #collapseTwo.panel-collapse.collapse
+    //-     .panel-body
+    //-       table.table
+    //-         tr
+    //-           td
+    //-             span.glyphicon.glyphicon-eye-open
+    //-             a(href='users/orders/')  View Orders
+    //- .panel.panel-default
+    //-   .panel-heading
+    //-     h4.panel-title
+    //-       a(data-toggle='collapse', data-parent='#accordion', href='#collapseThree')
+    //-         span.glyphicon.glyphicon-euro
+    //-         |  Payment details
+    //-   #collapseThree.panel-collapse.collapse
+    //-     .panel-body
+    //-       table.table
+    //-         tr
+    //-           td
+    //-             a(href='/users/paymentdetails')  Update payment details
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          a(data-toggle='collapse', data-parent='#accordion', href='#collapseFour')
+            span.glyphicon.glyphicon-user
+            | Account
+      #collapseFour.panel-collapse.collapse
+        .panel-body
+          table.table
+            tr
+              td
+                a(href='/users/updateaccount' )  Update Account Details
+            tr
+              td
+                span.glyphicon.glyphicon-trash.text-danger
+                a(href='/users/delete')
+                  | Delete Account

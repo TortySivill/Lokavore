@@ -1,0 +1,73 @@
+extends layout
+
+block content
+  .container-fluid
+    .row
+      img(src = "/images/logo.png", style="width:200px;")
+    .row
+      div(class='panel panel-default',id= "titleofpage")
+        h1= title
+
+      script(async defer,  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgYQQGTA9pW73LBJC46_Xg77DdTwksckk&callback=initMap")
+      script(src = "javascripts/initMap")
+
+      #Bmap
+      script(type='text/javascript').
+
+
+        function initMap() {
+          var map;
+          var local_data =!{JSON.stringify(markerList)}
+          var bounds = new google.maps.LatLngBounds();
+          var mapOptions = {
+              mapTypeId: 'roadmap'
+          };
+
+          // Display a map on the page
+          map = new google.maps.Map(document.getElementById("Bmap"), mapOptions);
+          map.setTilt(45);
+
+              
+          // Multiple Markers
+          var i = 0
+          var markers = []
+          for (var i = 0; i < local_data.length; i++){
+            markers[i] = [local_data[i][0], local_data[i][1], local_data[i][2]]
+
+          }
+       
+
+          var content = []
+          for (var count = 0; count < local_data.length; count++){
+            var url = 'google.com';
+            content[count] = '<h1><a style="color:black;" href =/catalog/producer/'+local_data[count][4]+'>'+ local_data[count][0]+'</a></h1>'+'</h3>'+'<p style="color:black;">'+local_data[count][3]+'</p>'
+          }
+
+              
+          // Display multiple markers on a map
+          var infoWindow = new google.maps.InfoWindow(), marker, i;
+          
+          // Loop through our array of markers & place each one on the map  
+          for( i = 0; i < markers.length; i++ ) {
+              var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+              bounds.extend(position);
+              marker = new google.maps.Marker({
+                  position: position,
+                  map: map,
+                  title: markers[i][0]
+              });
+              
+              // Allow each marker to have an info window    
+              google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                  return function() {
+                      infoWindow.setContent(content[i]);
+                      infoWindow.open(map, marker);
+                  }
+              })(marker, i));
+
+              // Automatically center the map fitting all markers on the screen
+              map.fitBounds(bounds);
+          }
+        }
+
+      script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDHvXl7H2UCKgfb7R9wJshs2-te_CIEmt4&callback=initMap')

@@ -1,0 +1,45 @@
+extends layout
+
+block content
+	.row
+		img(src = "/images/logo.png", style="width:200px;")
+	.row
+		h1= title
+
+
+		form(action='', method='post')
+			div.form-group
+				label(for ='user_type') User type:
+					div.form-control
+						input#user_type(type='radio',name='user_type', value = 'producer')
+						label Producer
+						input#user_type(type='radio',name='user_type',value = 'consumer')
+						label Consumer
+			div.form-group
+				label(for='email') Email:
+				input#email.form-control(type='email',name='email',placeholder='Email Address')
+			div.form-group
+				label(for='name') Name:
+				input#name.form-control(type=text, name='name',placeholder='name')
+			div.form-group
+				label(for='password') Password:
+				input#password.form-control(type='password',name='password',placeholder='Password')
+			div.form-group
+				label(for='confirm_password') Confirm Password:
+				input#confirm_password.form-control(type='password',name='confirm_password',placeholder='Confirm Password')
+			
+			div.form-group
+				label(for='location') Location:
+				input#location.form-control(type=location,name='location', placeholder='Post Code')
+			button.btn.btn-primary(type='submit') Submit
+
+
+
+		if errors
+				ul
+					for error in errors
+						li!=error.msg
+
+
+		if confirm_error
+				p #{confirm_error}

@@ -1,0 +1,50 @@
+extends layout
+
+block content
+    div(class='container-fluid')
+      - var count = 0
+      each product in data.produce
+        - count++
+        if(count%4 == 0)
+          div(class = 'row')
+            div(class= 'col-sm-3 col-md-3 col-lg-3')
+              div(class = "thumbnail")
+                img(class ="img", src = product.image, alt = "",width="350", height="222")
+                div(class = "caption")
+                  h4(class = "pull-right") £#{product.price}
+                  h4
+                    a(href ="/catalog/product/" + product.id + "/update") #{product.name}
+                div(class = "ratings")
+                  h4(class = 'pull-right') 1.5 miles away
+                    span(class = 'glyphicon glyphicon-road')
+                  if(product.rating<2)
+                    span(class = 'label label-danger') #{product.rating}
+                      span(class ='glyphicon glyphicon-globe')
+                  if(product.rating>=2 && product.rating<3)
+                    span(class = 'label label-warning') #{product.rating}
+                      span(class ='glyphicon glyphicon-globe')
+                  if(product.rating>=3)
+                    span(class = 'label label-success') #{product.rating}
+                      span(class ='glyphicon glyphicon-globe')
+        else
+          div(class= 'col-sm-3 col-md-3 col-lg-3')
+            div(class = "thumbnail")
+              img(class = "img", src = product.image, alt = "",width="350", height="222")
+              div(class = "caption")
+                h4(class = "pull-right") £#{product.price}
+                h4
+                  a(href ="/catalog/product/" + product.id + "/update") #{product.name}
+              div(class = "ratings")
+                h4(class = 'pull-right') 1.5 miles away
+                  span(class = 'glyphicon glyphicon-road')
+                if(product.rating<2)
+                  span(class = 'label label-danger') #{product.rating}
+                    span(class ='glyphicon glyphicon-globe')
+                if(product.rating>=2 && product.rating<3)
+                  span(class = 'label label-warning') #{product.rating}
+                    span(class ='glyphicon glyphicon-globe')
+                if(product.rating>=3)
+                  span(class = 'label label-success') #{product.rating}
+                    span(class ='glyphicon glyphicon-globe')
+      else
+        h3 You have to make produce before you can edit!

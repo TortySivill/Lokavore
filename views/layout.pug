@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+html(lang='en')
+  head
+    title Lokavore: #{title}
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel="stylesheet", href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    link(href='https://fonts.googleapis.com/css?family=Montserrat', rel='stylesheet')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    body
+    nav(class='topnav' id='head-navbar')
+      div(class='container-fluid')
+        div(class='navbar-header')
+          ul(class='nav navbar-nav' id="navbar-category")
+            li
+              a(href='/catalog') Home
+            li
+              a(href='/catalog/producers/') All Producers
+            each category in nav
+              li(class = 'dropdown')
+                a(class='dropdown-toggle', data-toggle='dropdown',href='/catalog/category'+category.id) #{category.name}
+                  span(class='caret')
+                ul(class='dropdown-menu')
+                  each subcat in category.subcats
+                    li
+                      a(href='/catalog/subcategory/'+ subcat.id) #{subcat.name}
+                  li
+                    a(href='/catalog/category/'+category.id) All #{category.name}
+
+        ul(class='nav navbar-nav navbar-right' id="navbar-users", style="float:right;")
+          if(!isAuthenticated)
+            li
+              a(href='/users/register/') Register new account
+            li
+              a(href='/users/login/') Log in to your account
+          else
+            li
+              a(href='/users/logout/') Log out
+
+
+
+    div(class = "container-fluid")
+      div(class = "row")
+        if(isAuthenticated)
+          if(user_detail)
+            if(user_detail.user_type === "Customer")
+              include lokavortal_customer.pug
+            if(user_detail.user_type === "Producer")
+              include lokavortal_producer.pug
+        block content

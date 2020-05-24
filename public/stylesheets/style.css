@@ -1,0 +1,418 @@
+/*http://www.colourlovers.com/palette/1461210/landscape*/
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  background: #308446;
+  color:white;
+  text-align: center;
+}
+.form-group{
+  margin: 20px;
+
+}
+.form-control{
+  border-radius: 25px;
+}
+#productinfo{
+  width:100%;
+  height:100%;
+  background: #015D52;
+  border-radius: 25px;
+  /*padding :50px;
+  padding-left: 100px;
+  padding-right: 100px;*/
+  display: inline-block;
+  border: #015D52;
+  text-align: left;
+  padding: 10px;
+}
+#accordion a{
+  color:black;
+  text-align: left;
+}
+#accordion span{
+  color:black;
+}
+#accordion{
+  text-align: left;
+}
+#producerinfo{
+  width:100%;
+  height:100%;
+  background: #015D52;
+  border-radius: 25px;
+  /*padding :50px;
+  padding-left: 100px;
+  padding-right: 100px;*/
+  display: inline-block;
+  border: #015D52;
+  text-align: center;
+  padding: 10px;
+}
+#producerinfo.p{
+  width:100%;
+  height:100%;
+  background: #015D52;
+  border-radius: 25px;
+  /*padding :50px;
+  padding-left: 100px;
+  padding-right: 100px;*/
+  display: inline-block;
+  border: #015D52;
+  text-align: center;
+  padding: 10px;
+}
+
+
+h4{
+  margin:0;
+  text-align: left;
+  color:white;
+}
+
+#titleofpage{
+  background: #308446;
+  border-radius: 25px;
+  margin: 50px;
+  display: inline-block;
+  border: #015D52;
+  text-align: center;
+}
+#titledark{
+  background: #015D52;
+  border-radius: 25px;
+  margin: 50px;
+  padding :5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: inline-block;
+  border: #015D52;
+  text-align: center;
+}
+
+
+
+
+.navbarusers{
+  background: #BDECB6;
+}
+
+h1{
+  text-align: center;
+  font-size: 18px;
+}
+p{
+  font-size: 14px;
+  text-align: left;
+}
+a{
+  color: white;
+}
+a:hover{
+  color:white;
+  text-align: left;
+}
+.topnav {
+    background-color: #308446;
+    color: white;
+    box-shadow: 10px;
+    /*-webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;*/
+
+}
+
+
+.topnav .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: white;
+    border-radius: 25px;
+    background: #BDECB6;
+    margin: 5px
+}
+
+.navbar-nav > li > a {
+  color: white;
+  border-radius: 25px;
+  margin: 5px
+
+}
+
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  color: white;
+  border-radius: 25px;
+  background: #BDECB6;
+  margin: 5px;
+
+}
+
+.dropdown-menu{
+  background: #015D52;
+  color:white;
+  margin: 5px;
+  border-radius: 25px;
+
+
+}
+.dropdown-menu >li >a{
+  color:white;
+  margin: 5px;
+  border-radius: 25px;
+}
+
+/*.panel{
+  border-radius: 5px;
+  border: 5px;
+  padding: 5px;
+  background: #308446;
+  color:white;
+  margin: 20px;
+  box-shadow: 10px 10px 5px #888888;
+}*/
+.thumbnail{
+  background: #015D52;
+  border :#015D52;
+  text-align: left;
+  font-size: 15px;
+}
+.img{
+  border-radius: 5px;
+}
+
+
+/*ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ Change the link color to #111 (black) on hover
+li a:hover {
+    background-color: #111;
+}
+ Add a black background color to the top navigation*/
+
+/*
+ Style the links inside the navigation bar
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+}
+
+.container a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}*/
+/*p{
+  text-align: center;
+   color: white; font-family: 'Helvetica Neue', sans-serif; font-size: 100px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*MAP CSS*/
+
+
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+#map {
+      height: 250px;
+      width: 100%;
+      }
+
+#Bmap {
+      height: 500px;
+      width: 100%;
+      }
+
+
+/*
+.nav>li {
+  display: inline-block;
+  white-space: nowrap;
+}
+#head-navbar {
+  width: 100%;
+  white-space: normal;
+  display: inline-block;
+  overflow: hidden;
+}
+
+#side-navbar{
+  float: right;
+  white-space: normal;
+  display: inline-block;
+  overflow: hidden;
+}
+*/
+
+
+/*#quiz {
+    display:inline-block;
+}
+
+.button {
+    border:4px solid;
+    border-radius:5px;
+    width: 100px;
+    padding-left:5px;
+    padding-right: 5px;
+    position: relative;
+    background-color: #7fd5f1;
+    color: black;
+    margin: 0 2px 0 2px;
+}
+
+.button.active {
+    background-color: #F8F8FF;
+    color: #525252;
+}
+
+button {
+    position: relative;
+}
+
+.button a {
+    text-decoration: none;
+    color: black;
+}
+
+*/
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/*
+#prev {
+    display:none;
+}*/
+
+#start {
+    display:none;
+    width: 90px;
+}
+.quiz{
+  background: black
+}

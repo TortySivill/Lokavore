@@ -1,0 +1,64 @@
+extends layout
+
+block content
+  div(class='container')
+    .row
+      img(src = "/images/logo.png", style="width:200px;")
+    .row
+      div(class='panel panel-default',id="titleofpage")
+        h1 #{category.name}
+        if (category.cat_name)
+          h1 All #{category.cat_name}
+  div(class='container-fluid')
+    - var count = 0
+    each product in produce
+      - count++
+      if(count%4 == 0)
+        div(class = 'row')
+          div(class= 'col-sm-3 col-md-3 col-lg-3')
+            div(class = "thumbnail")
+              img(class ="img", src = product.image, alt = "", width="350", height="222")
+              div(class = "caption")
+                h4(class = "pull-right") £#{product.price}
+                h4
+                  a(href ="/catalog/product/" + product.id) #{product.name}
+              div(class = "ratings")
+                if(product.distance < 0)
+                  h4(class = 'pull-right') Log in to see distance
+                else
+                  h4(class = 'pull-right') #{product.distance}
+                  span(class = 'glyphicon glyphicon-road', style = "float:right")
+                if(product.rating<2)
+                  span(class = 'label label-danger') #{product.rating}
+                    span(class ='glyphicon glyphicon-globe')
+                if(product.rating>=2 && product.rating<3)
+                  span(class = 'label label-warning') #{product.rating}
+                    span(class ='glyphicon glyphicon-globe')
+                if(product.rating>=3)
+                  span(class = 'label label-success') #{product.rating}
+                    span(class ='glyphicon glyphicon-globe')
+      else
+        div(class= 'col-sm-3 col-md-3 col-lg-3')
+          div(class = "thumbnail")
+            img(class = "img", src = product.image, alt = "",width="350", height="222")
+            div(class = "caption")
+              h4(class = "pull-right") £#{product.price}
+              h4
+                a(href ="/catalog/product/" + product.id) #{product.name}
+            div(class = "ratings")
+              if(product.distance < 0)
+                h4(class = 'pull-right') Log in to see distance
+              else if(product.distance === '1 ft')
+                h4(class = 'pull-right') This is your produce
+              else
+                h4(class = 'pull-right') #{product.distance}
+                span(class = 'glyphicon glyphicon-road', style = "float:right")
+              if(product.rating<2)
+                span(class = 'label label-danger') #{product.rating}
+                  span(class ='glyphicon glyphicon-globe')
+              if(product.rating>=2 && product.rating<3)
+                span(class = 'label label-warning') #{product.rating}
+                  span(class ='glyphicon glyphicon-globe')
+              if(product.rating>=3)
+                span(class = 'label label-success') #{product.rating}
+                  span(class ='glyphicon glyphicon-globe')

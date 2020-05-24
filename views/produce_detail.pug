@@ -1,0 +1,71 @@
+extends layout
+
+block content
+  div(class='container-fluid')
+    div(class='row',style="text-align:left ;padding-left: 10px")
+      a(href = '/catalog/subcategory/'+ produce.sub_category_id ,style = 'color:308446; text-align:left, float:left') Rest of shelf
+  .container-fluid
+    .row
+      .col-xs-8
+        div(class='panel panel-default', id= "productinfo")
+          .row
+            .col-xs-6
+              img( style= "width:100%; display:inline-block; border-radius:25px; border : 25px; padding: 10px", src= produce.image)
+            .col-xs-6
+              h3=produce.name
+              h5 Sold by 
+                a(href='/catalog/producer/'+produce.producer.id) #{produce.producer.name}
+              h6.title-price
+                small CURRENT PRICE
+              h2(style='margin-top:0px;') £#{produce.price}
+              h6.title-price
+                small CURRENT QUANTITY
+              h4(style='margin-top:0px;')
+                span(class = 'badge badge-default') #{produce.quantity}
+                h6.title-price
+                  small CURRENT RATING
+              h4
+                if(produce.rating<2)
+                  span(class = 'label label-danger') #{produce.rating}
+                    span(class ='glyphicon glyphicon-globe')
+                if(produce.rating>=2 && produce.rating<3)
+                  span(class = 'label label-warning') #{produce.rating}
+                    span(class ='glyphicon glyphicon-globe')
+                if(produce.rating>=3)
+                  span(class = 'label label-success') #{produce.rating}
+                    span(class ='glyphicon glyphicon-globe')
+              h6.title-price
+                small DISTANCE FROM YOU
+              h4(style='margin-top:0px;')
+                if(produce.distance == -1)
+                  span(class = 'badge badge-default') Log in to see distance
+                else
+                  span(class = 'badge badge-default') #{produce.distance}
+                span(class = 'glyphicon glyphicon-road')
+              //- .section(style='padding-bottom:20px; padding-top:40px')
+              //-   button.btn.btn-success
+              //-     span.glyphicon.glyphicon-shopping-cart(style='margin-right:10px', aria-hidden='true')
+              //-     |Add to cart
+              p=produce.description
+      .col-xs-4
+        div(class='panel panel-default', id = "producerinfo")
+          a(href = '/catalog/producer/'+ produce.producer.id) #{produce.producer.name}
+          h3=produce.producer.name
+          img(style='max-width:100px;', src= produce.producer.image, class = "center-block")
+          h6.title-price
+            small SPECIALITY
+          h5(style='margin-top:0px;') #{produce.producer.speciality}
+            
+          h6.title-price
+            small CURRENT RATING
+          h4(style = "text-align:center; margin-bottom: 10px")
+            if(produce.producer.rating<2)
+              span(class = 'label label-danger') #{produce.producer.rating}
+                span(class ='glyphicon glyphicon-globe')
+            if(produce.producer.rating>=2 && produce.producer.rating<3)
+              span(class = 'label label-warning') #{produce.producer.rating}
+                span(class ='glyphicon glyphicon-globe')
+            if(produce.producer.rating>=3)
+              span(class = 'label label-success') #{produce.producer.rating}
+                span(class ='glyphicon glyphicon-globe')
+          p(style = "text-aligncenter") #{produce.producer.summary}

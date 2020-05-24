@@ -1,0 +1,44 @@
+.col-sm-3.col-md-3
+  #accordion.panel-group
+    //- .panel.panel-default
+    //-   .panel-heading
+    //-     h4.panel-title
+    //-       a(data-toggle='collapse', data-parent='#accordion', href='#collapseOne')
+    //-         span.glyphicon.glyphicon-check
+    //-         |  Orders
+    //-   #collapseOne.panel-collapse.collapse.in
+    //-     .panel-body
+    //-       table.table
+    //-         tr
+    //-           td
+    //-             span.glyphicon.glyphicon-eye-open
+    //-             a(href='users/orders/')  View Orders
+    //- .panel.panel-default
+    //-   .panel-heading
+    //-     h4.panel-title
+    //-       a(data-toggle='collapse', data-parent='#accordion', href='#collapseTwo')
+    //-         span.glyphicon.glyphicon-euro
+    //-         |  Payment details
+    //-   #collapseTwo.panel-collapse.collapse
+    //-     .panel-body
+    //-       table.table
+    //-         tr
+    //-           td
+    //-             a(href='users/paymentdetails') Update payment details
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title
+          a(data-toggle='collapse', data-parent='#accordion', href='#collapseThree')
+            span.glyphicon.glyphicon-user
+            | Account
+      #collapseThree.panel-collapse.collapse
+        .panel-body
+          table.table
+            tr
+              td
+                a(href='/users/updateaccount')  Update Account Details
+            tr
+              td
+                span.glyphicon.glyphicon-trash.text-danger
+                a.text-danger(href='/users/delete')
+                  | Delete Account

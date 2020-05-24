@@ -1,0 +1,98 @@
+extends layout
+
+block content
+    div(class='container-fluid')
+      div(class='row',style="text-align:left ;padding-left: 10px")
+        a(href = '/catalog/producers' ,style = 'color:308446; text-align:left, float:left') All Producers
+    .container-fluid
+      .row
+        .col-xs-8
+          div(class='panel panel-default', id= "productinfo")
+            .row
+              .col-xs-6
+                img( style= "width:100%; display:inline-block; border-radius:25px; border : 25px; padding: 10px", src=producer_detail.image)
+              .col-xs-6
+                h3=producer_detail.name
+                h6.title-price
+                  small SPECIALITY
+                h2(style='margin-top:0px;') #{producer_detail.speciality}
+                h6.title-price
+                  small CONTACT INFO
+                h4(style='margin-top:0px;')
+                  span(class = 'badge badge-default') #{producer_detail.phone}
+                  h6.title-price
+                    small CURRENT RATING
+                h4(style = 'margin-bottom:10px')
+                  if(producer_detail.rating<2)
+                    span(class = 'label label-danger') #{producer_detail.rating}
+                      span(class ='glyphicon glyphicon-globe')
+                  if(producer_detail.rating>=2 && producer_detail.rating<3)
+                    span(class = 'label label-warning') #{producer_detail.rating}
+                      span(class ='glyphicon glyphicon-globe')
+                  if(producer_detail.rating>=3)
+                    span(class = 'label label-success') #{producer_detail.rating}
+                      span(class ='glyphicon glyphicon-globe')
+                
+                p=producer_detail.summary
+        .col-xs-4
+          div(class='panel panel-default', id = "producerinfo")
+            #map
+            script.
+              function initMap() {
+               var uluru = {lat: #{lat}, lng: #{lang}};
+               var map = new google.maps.Map(document.getElementById('map'), {
+               zoom: 12,
+               center: uluru
+              });
+              var marker = new google.maps.Marker({
+              position: uluru,
+              map: map
+              });
+              }
+            script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDHvXl7H2UCKgfb7R9wJshs2-te_CIEmt4&callback=initMap')
+    div(class='container-fluid')
+      div(class='row')
+      - var count = 0
+      each product in producer_detail.produce
+        - count++
+        if(count%4 == 0)
+          div(class = 'row')
+            div(class= 'col-sm-3 col-md-3 col-lg-3')
+              div(class = "thumbnail")
+                img(class ="img", src = product.image, alt = "",width="350", height="222")
+                div(class = "caption")
+                  h4(class = "pull-right") £#{product.price}
+                  h4
+                    a(href ="/catalog/product/" + product.id) #{product.name}
+                div(class = "ratings")
+                  h4(class = 'pull-right') 1.5 miles away
+                    span(class = 'glyphicon glyphicon-road')
+                  if(product.rating<2)
+                    span(class = 'label label-danger') #{product.rating}
+                      span(class ='glyphicon glyphicon-globe')
+                  if(product.rating>=2 && product.rating<3)
+                    span(class = 'label label-warning') #{product.rating}
+                      span(class ='glyphicon glyphicon-globe')
+                  if(product.rating>=3)
+                    span(class = 'label label-success') #{product.rating}
+                      span(class ='glyphicon glyphicon-globe')
+        else
+          div(class= 'col-sm-3 col-md-3 col-lg-3')
+            div(class = "thumbnail")
+              img(class = "img", src = product.image, alt = "",width="350", height="222")
+              div(class = "caption")
+                h4(class = "pull-right") £#{product.price}
+                h4
+                  a(href ="/catalog/product/" + product.id) #{product.name}
+              div(class = "ratings")
+                h4(class = 'pull-right') 1.5 miles away
+                  span(class = 'glyphicon glyphicon-road')
+                if(product.rating<2)
+                  span(class = 'label label-danger') #{product.rating}
+                    span(class ='glyphicon glyphicon-globe')
+                if(product.rating>=2 && product.rating<3)
+                  span(class = 'label label-warning') #{product.rating}
+                    span(class ='glyphicon glyphicon-globe')
+                if(product.rating>=3)
+                  span(class = 'label label-success') #{product.rating}
+                    span(class ='glyphicon glyphicon-globe')

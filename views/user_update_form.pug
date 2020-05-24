@@ -1,0 +1,37 @@
+extends layout
+
+block content
+	div(class = 'col-sm-9 col-md-9')
+		div(class = 'container')
+			h1= title
+
+
+			form(action='', method='post')
+				div.form-group
+					label(for='email') Email:
+					input#email.form-control(type='email',name='email',placeholder= user_data.email)
+				div.form-group
+					label(for='name') Name:
+					input#name.form-control(type=text, name='name',placeholder= user_data.username)
+				div.form-group
+					label(for='password') Password:
+					input#password.form-control(type='password',name='password',placeholder='Password')
+				div.form-group
+					label(for='confirm_password') Confirm Password:
+					input#confirm_password.form-control(type='password',name='confirm_password',placeholder='Confirm Password')
+				div.form-group
+					label(for='location') Location:
+					input#location.form-control(type=location,name='location', placeholder= user_data.postcode)
+
+				button.btn.btn-primary(type='submit') Submit
+
+
+
+			if errors
+					ul
+						for error in errors
+							li!=error.msg
+
+
+			if confirm_error
+					p #{confirm_error}

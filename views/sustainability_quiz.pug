@@ -1,0 +1,197 @@
+extends layout
+
+block content
+  div(class = 'col-sm-9 col-md-9')
+    div(class = 'container', id= "quiz")
+      head
+        title Sustainability Quiz
+      body
+        #container
+          #title
+            h1 Find out your Sustainability Rating with this Quiz
+          br
+          <form action="" method="post">
+          <input type="hidden" name="total" id="total">
+          </form>
+          #quiz
+          a(href="#" ,class="btn btn-info", role="button" id = "next") Next
+          a(href=href='/catalog/producer/' +producer_id ,class="btn btn-info", role="button" id = "home") View my profile
+
+        
+
+
+          script(type='text/javascript').
+
+            (function() {
+               var questions = [{
+                question: "What is your Food Hygiene Rating?",
+                choices: [0, 1, 2, 3, 4, 5],
+                A: 0,
+                B: 1,
+                C: 3,
+                D: 4,
+                E: 5 
+                }, {
+                question: "Is your produce Organic?",
+                choices: ['Yes', 'No'],
+                A: 1,
+                E: 0
+                }, {
+                question: "What are the average food miles for your produce?",
+                choices: ['0-10', '11-50', '51-100', '100-500', 'I dont know'],
+                A: 4,
+                B: 3,
+                C: 2,
+                D: 1,
+                E: 0
+                }, {
+                question: "What proportion of you establishment is powered by renewable energy?",
+                choices: ['0-20 %','21-40 %', '41-60 %', '61-80 %', '81-100 %'],
+                A: 0,
+                B: 1,
+                C: 2,
+                D: 3,
+                E: 4
+                }, {
+                question: "Are you a Co-operative?",
+                choices: ['Yes', 'No'],
+                A: 1,
+                E: 0
+                }];
+
+                var qCount = 0; 
+                var answers = [];
+                var quiz = $('#quiz'); 
+        
+                getQuestion();
+        
+                $('#next').on('click', function (n) {
+                  addChosen();
+                  if (isNaN(answers[qCount])) {
+                    alert('You need to select an answer');
+                  } else {
+                    qCount++;
+                    getQuestion();
+                  }
+                });
+        
+        
+                
+                function createQuestion(index) {
+                  var q = $('<div>', {
+                    id: 'question'
+                  });
+          
+                  var question = $('<p>').append(questions[index].question);
+                  q.append(question);
+          
+                  var answerList = createAnswerList(index);
+                  q.append(answerList);
+          
+                  return q;
+                }
+
+                function createAnswerList(index) {
+                  var answerList = $('<ul>');
+                  var a;
+                  var b = '';
+                  for (var i = 0; i < questions[index].choices.length; i++) {
+                    a = $('<li>');
+                    b = '<input type="radio" name="answer" value=' + i + ' />';
+                    b += questions[index].choices[i];
+                    a.append(b);
+                    answerList.append(a);
+                  }
+                  return answerList;
+                }
+
+                function addChosen() {
+                  answers[qCount] = +$('input[name="answer"]:checked').val();
+                }
+
+                function getQuestion() {
+                  quiz.fadeOut(function() {
+                    $('#question').remove();
+            
+                    if(qCount < questions.length){
+                      var nextQuestion = createQuestion(qCount);
+                      quiz.append(nextQuestion).fadeIn();
+                      if (!(isNaN(answers[qCount]))) {
+                        $('input[value='+answers[qCount]+']').prop('checked', true);
+                      } 
+                      if(qCount === 0){
+                        $('#next').show();
+                        $('#home').hide();
+                      } 
+                    }else {
+                      var scoreElem = getResult();
+                      console.log("score elem in pug" + scoreElem);
+                      quiz.append(scoreElem).fadeIn();
+                      
+                      $('#next').hide();
+                      $('#home').show();
+                    }
+                  });
+                }
+
+                function getResult() {
+                  var score = $('<p>',{id: 'question'});
+        
+                  var Correct = 0;
+                  for (var i = 0; i < answers.length; i++) {
+                    if (answers[i] === questions[i].A) {
+                      Correct += 1;
+                    }
+                    else if(answers[i] === questions[i].B){
+                      Correct += 2;
+                    }
+                    else if(answers[i] === questions[i].C){
+                      Correct += 3;
+                    }
+                    else if(answers[i] === questions[i].D){
+                      Correct += 4;
+                    }
+                    else if(answers[i] === questions[i].E){
+                      Correct += 5;
+                    }
+
+                  }
+        
+                  if( 22 < Correct && Correct <= 25){
+                    score.append('Your sustainability score is 5');
+                    var element = document.getElementById("total");
+                    element.value = 5;
+                    element.form.submit();
+                    return score;
+                  }
+                  else if (18 < Correct && Correct <= 22){
+                    score.append('Your sustainability score is 4');
+                    var element = document.getElementById("total");
+                    element.value = 4;
+                    element.form.submit();
+                    return score;
+                  }
+                  else if (13 < Correct && Correct <= 18){
+                    score.append('Your sustainability score is 3');
+                    var element = document.getElementById("total");
+                    element.value = 3;
+                    element.form.submit();
+                    return score;
+                  }
+                  else if (9 < Correct && Correct <= 13){
+                    score.append('Your sustainability score is 2');
+                    var element = document.getElementById("total");
+                    element.value = 2;
+                    element.form.submit();
+                    return score;
+                  }
+                  else {
+                    score.append('Your sustainability score is 1');
+                    var element = document.getElementById("total");
+                    element.value = 1;
+                    element.form.submit();
+                    return score;
+                  }
+                }
+            })()
+      
